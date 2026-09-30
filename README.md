@@ -27,7 +27,6 @@ This project is a demonstration of building a flight management system using the
 *   [Contributing](#contributing)
 *   [License](#license)
 *   [Important Links](#important-links)
-*   [Footer](#footer)
 
 ## 🛠️ Tech Stack
 
@@ -166,10 +165,6 @@ No license information was detected for this project. Please refer to the reposi
 ## 🔗 Important Links
 
 *   **Repository:** [https://github.com/Odeh182003/Flights_Django](https://github.com/Odeh182003/Flights_Django)
-
-## 📝 Footer
-
-© 2023 Flights_Django | Repository available at [Odeh182003/Flights_Django](https://github.com/Odeh182003/Flights_Django)
 
 **Author:** Odeh182003
 
