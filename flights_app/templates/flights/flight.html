@@ -1,31 +1,49 @@
-{% extends "flights/layout.html" %}
-{% block body %}
-<h1>Flight {{ flight.id }}</h1>
+{% extends "flights/base.html" %}
 
-    <ul>
+{% block title %} Flight {{ flight.id }} {% endblock %}
+{% block page_title %} Flight {{ flight.id }} {% endblock %}
+{% block parent_page %}Flight {% endblock %}
+{% block body %}
+
+    <ul class="ps-5 fs-2">
         <li>Origin: {{flight.origin}}</li>
         <li>Desination: {{flight.destination}}</li>
         <li>Duration: {{flight.duration}}</li>
     </ul>
-    <h1>Passengers</h1>
+    <h1 class="fs-2 badge bg-primary text-wrap ms-5 text-uppercase" style="width: 16rem; text-align:center;">Passengers</h1>
+    <div class="row ms-4 text-center fs-4">
     <ul>
     {% for passenger in passengers %}
   
-        <li>{{passenger}}</li>
+        <li class="mt-3">{{passenger}}
+            <form action="{% url 'cancel' flight.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="passenger" value="{{passenger.id}}">
+                <input type="submit" value="cancel" class="input-group mt-3 btn btn-danger">
+    </form>
+        </li>
+        
         {% empty %}
         <li>No Passengers</li>
         {%endfor%}
     </ul>
+    </div>
+    <div class="container">
+        
     <form action="{% url 'book' flight.id %}" method="post">
         {%csrf_token%}
-        <select name="passenger">
+        <div class="input-group mb-3">
+        <select class="form-select col-md-2" name="passenger">
             {% for passenger in non_passengers %}
             <option value="{{passenger.id}}">{{passenger}}</option>
             {% endfor %}
         </select>
-        <input type="submit">
+        <input type="submit" class="input-group mt-3 btn btn-success">
+        </div>
     </form>
-    <a href="{% url 'index' %}">Back To Flights</a>
+    </div>
+
+    <a href="{% url 'flight_index' %}" class="container">Back To Flights</a>
 
     
 {% endblock %}

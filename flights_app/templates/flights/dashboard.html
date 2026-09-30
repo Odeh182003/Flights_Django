@@ -1,0 +1,44 @@
+{% extends "flights/base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %}
+{% block page_title %} Flights Dashboard {% endblock %}
+
+{% block body %}
+
+   
+        <div class="card mx-auto" style="width: 18rem;">
+<img src="{% static 'flights_app/flight.jpg' %}" class="card-img-top" alt="flight Image">
+<div class="card-body">
+    <h4 class="card-title text-capitalize"> enjoy your flight</h4>
+    <p class="card-txt">This is a website for practice that includes AI</p>
+
+</div>
+ </div>
+ <div class="row g-3 pt-4">
+<div class="col-12 col-md-6">
+    <h2>Airports (code)</h2>
+    <div class="card">
+   
+    {% for airport in airports %}
+    <ul>
+        <li>{{airport}}</li>
+    </ul>
+    {% endfor %}
+
+</div>
+</div>
+<div class="col-12 col-md-6">
+    <h2>Passengers</h2>
+    <div class="card">
+        <ol>
+        {% for passenger in passengers %}
+        
+            <li> {{ passenger }}</li>
+        
+        {% endfor %}
+        </ol>
+    </div>
+</div>
+</div>
+
+{% endblock %}

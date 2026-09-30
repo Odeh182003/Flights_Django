@@ -1,0 +1,25 @@
+{% extends 'flights/base.html' %}
+{%block title%} AI Chat Assistant {%endblock%}
+{% block page_title %} Chat Assistant is here to help you {% endblock %}
+{% block parent_page %}AI Assistant{% endblock %}
+
+{% block body %}
+<h1>AI Flight Assistant</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="user_query" class="form-label">Ask AI Assistant what you need</label>
+    <input type="text" class="form-control form-control-lg" name="user_query" id="user_query" placeholder="Ask AI " required>
+    </div>
+    <div class="mb-3">
+    <button type="submit" class="btn btn-dark text-white">Ask AI</button>
+    </div>
+
+</form>
+
+{% if user_query %}
+<p><strong>You Asked AI: </strong>{{ user_query }}</p>
+<p><strong>AI response: </strong>{{ ai_response }}</p>
+{% endif %}
+{% endblock %}

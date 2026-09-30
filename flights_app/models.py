@@ -20,3 +20,11 @@ class Passenger(models.Model):
     flights = models.ManyToManyField(Flight, blank=True,related_name="passenger")
     def __str__(self):
         return f"{self.first} {self.last}"
+class FlightManifest(models.Model):
+#primary_key=True makes flight both a foreign key and primary key of 
+#FlightManifest that means Manifest id is the same as its flight id
+#and each flight can have at least one manifest
+    flight = models.OneToOneField(Flight, on_delete=models.CASCADE,primary_key=True)
+    notes = models.TextField()
+    def __str__(self):
+        return f"{self.flight} has {self.notes}"
