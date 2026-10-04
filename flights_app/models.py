@@ -18,6 +18,7 @@ class Passenger(models.Model):
     last = models.CharField(max_length=64)
 #blank=True means allow passenger to have no flights at all
     flights = models.ManyToManyField(Flight, blank=True,related_name="passenger")
+    image = models.ImageField(upload_to='passenger_images/', blank=True, null=True)
     def __str__(self):
         return f"{self.first} {self.last}"
 class FlightManifest(models.Model):

@@ -1,0 +1,141 @@
+# Arabic translations for Flight Manager Project.
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-04 14:26+0300\n"
+"Language: ar\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\flights_app\templates\flights\add_flight.html:8
+#, fuzzy
+#| msgid "Add Flight"
+msgid "Add a New Flight"
+msgstr "إضافة رحلة"
+
+#: .\flights_app\templates\flights\add_flight.html:12
+#: .\flights_app\templates\flights\base.html:39
+msgid "Add Flight"
+msgstr "إضافة رحلة"
+
+#: .\flights_app\templates\flights\add_passenger.html:7
+#, fuzzy
+#| msgid "Add Passenger"
+msgid "Add a New Passenger"
+msgstr "إضافة مسافر"
+
+#: .\flights_app\templates\flights\add_passenger.html:11
+#: .\flights_app\templates\flights\base.html:42
+msgid "Add Passenger"
+msgstr "إضافة مسافر"
+
+#: .\flights_app\templates\flights\base.html:29
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: .\flights_app\templates\flights\base.html:32
+msgid "Flights Lists"
+msgstr "قائمة الرحلات"
+
+#: .\flights_app\templates\flights\base.html:35
+#: .\flights_app\templates\flights\chat.html:5
+msgid "AI Assistant"
+msgstr "المساعد الذكي"
+
+#: .\flights_app\templates\flights\base.html:45
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\flights_app\templates\flights\chat.html:3
+#, fuzzy
+#| msgid "AI Assistant"
+msgid "AI Chat Assistant"
+msgstr "المساعد الذكي"
+
+#: .\flights_app\templates\flights\chat.html:4
+msgid "Chat Assistant is here to help you"
+msgstr "المساعد الذكي هنا لمساعدتك"
+
+#: .\flights_app\templates\flights\chat.html:8
+#, fuzzy
+#| msgid "AI Assistant"
+msgid "AI Flight Assistant"
+msgstr "المساعد الذكي"
+
+#: .\flights_app\templates\flights\chat.html:13
+msgid "Ask AI Assistant what you need"
+msgstr "أسأل المساعد الذكي"
+
+#: .\flights_app\templates\flights\chat.html:14
+msgid "Enter your question for the AI assistant"
+msgstr "أدخل سؤالك لمساعدك الذكي هنا"
+
+#: .\flights_app\templates\flights\chat.html:17
+msgid "Ask AI"
+msgstr "أسأل"
+
+#: .\flights_app\templates\flights\chat.html:26
+msgid "Your query has been sent to the AI. Processing in the background..."
+msgstr "تم ارسال سؤالك الى مساعدك الذكي. يتم الان المعالجة"
+
+#: .\flights_app\templates\flights\dashboard.html:13
+msgid "Enjoy your flight"
+msgstr "أستمتع برحلتك"
+
+#: .\flights_app\templates\flights\dashboard.html:14
+msgid "This is a website for practice that includes AI"
+msgstr ""
+
+#: .\flights_app\templates\flights\dashboard.html:20
+msgid "Airports (code)"
+msgstr "مطارات دولية"
+
+#: .\flights_app\templates\flights\flight.html:5
+#: .\flights_app\templates\flights\index.html:11
+#, fuzzy
+#| msgid "Add Flight"
+msgid "Flight"
+msgstr "إضافة رحلة"
+
+#: .\flights_app\templates\flights\flight.html:9
+msgid "Origin"
+msgstr "أصل"
+
+#: .\flights_app\templates\flights\flight.html:10
+msgid "Destination"
+msgstr "الوجهة"
+
+#: .\flights_app\templates\flights\flight.html:11
+msgid "Duration"
+msgstr "مدة الرحلة"
+
+#: .\flights_app\templates\flights\flight.html:27
+#, fuzzy
+#| msgid "Add Passenger"
+msgid "No Passengers"
+msgstr "لا مسافرين"
+
+#: .\flights_app\templates\flights\flight.html:46
+msgid "Back To Flights"
+msgstr "العودة الى الرحلات"
+
+#: .\flights_app\templates\flights\index.html:4
+msgid "A List Of All available Flights"
+msgstr "قائمة الرحلات الموجودة"
+
+#: .\flights_app\templates\flights\index.html:5
+#, fuzzy
+#| msgid "Add Flight"
+msgid "Flights"
+msgstr "رحلات"
+
+#: .\flights_app\templates\flights\index.html:7
+msgid "List of Flights"
+msgstr "قائمة الرحلات"
+
+#: .\flights_app\templates\flights\index.html:11
+msgid "to"
+msgstr "الى"
+
+#~ msgid "Flight Manager"
+#~ msgstr "مدير الرحلات"

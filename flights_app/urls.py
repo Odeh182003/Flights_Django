@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-#app_name="flights_app"
+app_name="flights_app"
 urlpatterns = [
 #Django maps URL Paths to Python callback functions ("views") 
 #The strings use parameter tag to "capture" values from the URLs
@@ -14,5 +14,8 @@ urlpatterns = [
     path("<int:flight_id>/book",views.book,name="book"),
     path("<int:flight_id>/cancel",views.cancel,name="cancel"),
     path("chat", views.ai_chat_view, name="chat"),
-    path("dashboard", views.dashboard, name="dashboard")
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("add_flight", views.add_flight, name="add_flight"),
+    path("add_passenger", views.add_passenger, name="add_passenger"),
+    path('chat/status/<str:task_id>/', views.check_ai_task_status, name='check_ai_task_status'),
 ]

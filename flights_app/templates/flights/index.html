@@ -1,14 +1,14 @@
 {% extends "flights/base.html" %}
-
+{% load i18n %}
 {% block title %} Flights List {% endblock %}
-{% block page_title %} A List Of All available Flights {% endblock %}
-{% block parent_page %}Flights {% endblock %}
+{% block page_title %} {% trans "A List Of All available Flights" %} {% endblock %}
+{% block parent_page %}{% trans "Flights" %} {% endblock %}
 {% block body %}
-<h1 style="text-align: center;">List of Flights</h1>
+<h1 style="text-align: center;">{% trans "List of Flights" %}</h1>
 <ol>
     {% for flight in flights %}
-    <a href="{% url 'flight' flight.id %}">
-    <li>Flight {{flight.id}}: {{flight.origin}} to {{flight.destination}}</li>
+    <a href="{% url 'flights_app:flight' flight.id %}">
+    <li>{% trans "Flight" %} {{flight.id}}: {{flight.origin}} {% trans "to" %} {{flight.destination}}</li>
     </a>
     {% endfor %}
 </ol>

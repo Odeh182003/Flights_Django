@@ -1,0 +1,13 @@
+{% extends 'flights/base.html' %}
+{% load i18n %}
+{% block title %} Add Passenger {% endblock %}
+{% block page_title %} Add Passenger {% endblock %}
+{% block parent_page %} Home / Flights / Add Passenger {% endblock %}
+{% block body %}
+    <h2 class="mb-4">{% trans "Add a New Passenger" %}</h2>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary mt-4">{% trans "Add Passenger" %}</button>
+    </form>
+{% endblock %}

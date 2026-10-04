@@ -1,25 +1,55 @@
 {% extends 'flights/base.html' %}
-{%block title%} AI Chat Assistant {%endblock%}
-{% block page_title %} Chat Assistant is here to help you {% endblock %}
-{% block parent_page %}AI Assistant{% endblock %}
+{% load i18n %}
+{% block title %} {% trans "AI Chat Assistant" %} {% endblock %}
+{% block page_title %} {% trans "Chat Assistant is here to help you" %} {% endblock %}
+{% block parent_page %}{% trans "AI Assistant" %}{% endblock %}
 
 {% block body %}
-<h1>AI Flight Assistant</h1>
+<h1>{% trans "AI Flight Assistant" %}</h1>
 
 <form method="POST">
     {% csrf_token %}
     <div class="mb-3">
-    <label for="user_query" class="form-label">Ask AI Assistant what you need</label>
-    <input type="text" class="form-control form-control-lg" name="user_query" id="user_query" placeholder="Ask AI " required>
+        <label for="user_query" class="form-label">{% trans "Ask AI Assistant what you need" %}</label>
+        <input type="text" class="form-control form-control-lg" name="user_query" id="user_query" placeholder="{% trans "Enter your question for the AI assistant" %}" required>
     </div>
     <div class="mb-3">
-    <button type="submit" class="btn btn-dark text-white">Ask AI</button>
+        <button type="submit" class="btn btn-dark text-white">{% trans "Ask AI" %}</button>
     </div>
-
 </form>
 
 {% if user_query %}
 <p><strong>You Asked AI: </strong>{{ user_query }}</p>
-<p><strong>AI response: </strong>{{ ai_response }}</p>
+<p><strong>AI response: </strong>
+    <span id="ai-response-text">
+        {% if processing %}
+             {% trans "Your query has been sent to the AI. Processing in the background..." %}
+        {% else %}
+            {{ ai_response }}
+        {% endif %}
+    </span>
+</p>
 {% endif %}
+
+{% if task_id %}
+<script>
+    const taskId = "{{ task_id }}";
+    const statusUrl = "{% url 'flights_app:check_ai_task_status' 'PLACEHOLDER' %}".replace('PLACEHOLDER', taskId);
+
+    const pollInterval = setInterval(() => {
+        fetch(statusUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'completed' || data.status === 'failed') {
+                    // Update the HTML text with the actual AI answer
+                    document.getElementById('ai-response-text').innerText = data.ai_response;
+                    // Stop polling once finished
+                    clearInterval(pollInterval);
+                }
+            })
+            .catch(error => console.error('Error checking task status:', error));
+    }, 1500); // Check every 1.5 seconds
+</script>
+{% endif %}
+
 {% endblock %}

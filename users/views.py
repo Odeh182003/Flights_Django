@@ -14,14 +14,22 @@ def login_view(request):
         user = authenticate(request,username=username,password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            next_url = request.GET.get('next') or request.POST.get('next')  # Get the 'next' parameter from GET or POST
+            if next_url:
+                return HttpResponseRedirect(next_url)
+            return HttpResponseRedirect(reverse("flights_app:dashboard"))
         else:
             return render(request,"users/login.html",{
                 "message":"Invalid Credentials"
             })
-    return render(request, "users/login.html")
+    message = None
+    if request.GET.get("next"):
+        message = "You must log in first to access this page."
+
+    return render(request, "users/login.html", {
+        "message": message
+    })
+
 def logout_view(request):
     logout(request)
-    return render(request, "users/login.html",{
-        "message":"User Logged Out"
-    })
+    return HttpResponseRedirect(reverse("users:login"))

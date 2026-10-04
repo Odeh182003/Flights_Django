@@ -1,14 +1,14 @@
 {% extends "flights/base.html" %}
-
+{% load i18n %}
 {% block title %} Flight {{ flight.id }} {% endblock %}
 {% block page_title %} Flight {{ flight.id }} {% endblock %}
-{% block parent_page %}Flight {% endblock %}
+{% block parent_page %}{% trans "Flight" %} {% endblock %}
 {% block body %}
 
     <ul class="ps-5 fs-2">
-        <li>Origin: {{flight.origin}}</li>
-        <li>Desination: {{flight.destination}}</li>
-        <li>Duration: {{flight.duration}}</li>
+        <li>{% trans "Origin" %}: {{flight.origin}}</li>
+        <li>{% trans "Destination" %}: {{flight.destination}}</li>
+        <li>{% trans "Duration" %}: {{flight.duration}}</li>
     </ul>
     <h1 class="fs-2 badge bg-primary text-wrap ms-5 text-uppercase" style="width: 16rem; text-align:center;">Passengers</h1>
     <div class="row ms-4 text-center fs-4">
@@ -16,7 +16,7 @@
     {% for passenger in passengers %}
   
         <li class="mt-3">{{passenger}}
-            <form action="{% url 'cancel' flight.id %}" method="post">
+            <form action="{% url 'flights_app:cancel' flight.id %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="passenger" value="{{passenger.id}}">
                 <input type="submit" value="cancel" class="input-group mt-3 btn btn-danger">
@@ -24,13 +24,13 @@
         </li>
         
         {% empty %}
-        <li>No Passengers</li>
+        <li>{% trans "No Passengers" %}</li>
         {%endfor%}
     </ul>
     </div>
     <div class="container">
         
-    <form action="{% url 'book' flight.id %}" method="post">
+    <form action="{% url 'flights_app:book' flight.id %}" method="post">
         {%csrf_token%}
         <div class="input-group mb-3">
         <select class="form-select col-md-2" name="passenger">
@@ -41,9 +41,20 @@
         <input type="submit" class="input-group mt-3 btn btn-success">
         </div>
     </form>
+    <!-- Add this wherever you want alert boxes to appear in your HTML -->
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
     </div>
 
-    <a href="{% url 'flight_index' %}" class="container">Back To Flights</a>
+    <a href="{% url 'flights_app:flight_index' %}" class="container"> {% trans "Back To Flights" %}</a>
 
     
 {% endblock %}
